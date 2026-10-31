@@ -9,8 +9,9 @@ export default defineConfig({
     host: '0.0.0.0',
     port: devServerPort,
     strictPort: true,
+    allowedHosts: [process.env.DEV_SERVER_HOST ?? 'localhost'],
     hmr: {
-      // The browser reaches Vite only through nginx, so HMR must use nginx's public port.
+      // The browser reaches Vite only through nginx, so HMR must use the public port.
       clientPort: Number(process.env.HMR_CLIENT_PORT ?? devServerPort),
     },
   },

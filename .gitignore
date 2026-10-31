@@ -10,6 +10,7 @@
 ###< symfony/framework-bundle ###
 
 /CLAUDE.md
+/docs/
 
 ###> friendsofphp/php-cs-fixer ###
 /.php-cs-fixer.php

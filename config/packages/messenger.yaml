@@ -1,5 +1,17 @@
 framework:
     messenger:
+        default_bus: command.bus
+
+        buses:
+            command.bus:
+                middleware:
+                    - doctrine_transaction
+            query.bus: ~
+            event.bus:
+                default_middleware:
+                    enabled: true
+                    allow_no_handlers: true
+
         failure_transport: failed
 
         transports:
@@ -9,11 +21,11 @@ framework:
                     max_retries: 3
                     delay: 1000
                     multiplier: 2
-            failed: 'doctrine://default?queue_name=failed'
+            failed: 'doctrine://default?queue_name=failed&auto_setup=0'
             sync: 'sync://'
 
         routing:
-            # 'App\Message\YourMessage': async
+            App\Shared\Domain\Event\DomainEvent: async
 
 when@test:
     framework:

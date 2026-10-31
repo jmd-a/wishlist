@@ -11,7 +11,6 @@ RUN apk add --no-cache git unzip \
         zip \
         apcu \
         redis \
-        amqp \
         xdebug
 
 COPY conf.d/app.ini /usr/local/etc/php/conf.d/zz-app.ini
